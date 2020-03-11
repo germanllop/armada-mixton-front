@@ -8,7 +8,8 @@ export default new Vuex.Store({
   state: {
     me:{},
     friends:[],
-    players:[]
+    players:[],
+    lobby:null
   },
   mutations: {
     SET_CURRENT_PLAYER: (state, player) => (state.me = player),
@@ -18,8 +19,11 @@ export default new Vuex.Store({
   actions: {
     async checkAuth({ commit }) {
       const res = await axios.get('auth/check')
-      console.log(res)
       commit('SET_CURRENT_PLAYER', res.data)
+    },
+    async logout({ commit }) {
+      await axios.get('auth/logout')
+      commit('SET_CURRENT_PLAYER', {})
     },
     async fetchPlayers({ commit }) {
         const res = await axios.get('api/getPlayers')
