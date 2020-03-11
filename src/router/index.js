@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Login from '../views/Login.vue'
 import Lobby from '../views/Lobby.vue'
+import NotFound from '../views/404.vue'
 
 Vue.use(VueRouter)
 
@@ -24,6 +25,16 @@ const routes = [
     name: 'Home',
     component: Home,
     meta: { requiresAuth: true }
+  },
+  {
+    path: '/logout',
+    name: 'Logout',
+    meta: { checkLogout: true }
+  },
+  {
+    path: '/*',
+    name: '404',
+    component: NotFound,
   }
 ]
 

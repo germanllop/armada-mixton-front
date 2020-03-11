@@ -10,29 +10,32 @@ Vue.config.productionTip = false
 
 router.beforeEach((to, from, next) => {
   if (to.matched.some(record => record.meta.requiresAuth)) { 
-    store.dispatch('checkAuth')
-    if (store.state.me) {
-      console.log('Ya estas autenticado, pasa compare')      
-      next()
-    } else {      
-      console.log('Se va para la página de autenticacion')      
+    store.dispatch('checkAuth').then(()=>{
+      if (store.state.me) {
+        next()
+      } else {      
+        next({
+          path: '/login'
+        })
+      }
+    })    
+  } else if(to.matched.some(record => record.meta.checkLogin)) {  
+    store.dispatch('checkAuth').then(()=>{
+      if (store.state.me) {
+        next({
+          path: '/'
+        })
+      } else {
+        next()
+      }
+    })    
+  } else if(to.matched.some(record => record.meta.checkLogout)) {
+    store.dispatch('logout').then(()=>{
       next({
         path: '/login'
       })
-    }
-  } 
-  else if(to.matched.some(record => record.meta.checkLogin)) {
-    if (store.state.me) {
-      console.log('Se va para la página del home, ya esta autenticado')      
-      next({
-        path: '/'
-      })
-    } else {
-      console.log('No estas autenticado, quedate aca')      
-      next()
-    }
-  } 
-  else {
+    })
+  } else {
     next() 
   }
 })

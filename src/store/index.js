@@ -6,7 +6,7 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    me:{},
+    me:null,
     friends:[],
     players:[],
     lobby:null
@@ -14,16 +14,18 @@ export default new Vuex.Store({
   mutations: {
     SET_CURRENT_PLAYER: (state, player) => (state.me = player),
     SET_PLAYERS: (state, players) => (state.players = players),
-    SET_FRIENDS: (state, friends) => (state.friends = friends)
+    SET_FRIENDS: (state, friends) => (state.friends = friends),
   },
   actions: {
     async checkAuth({ commit }) {
       const res = await axios.get('auth/check')
       commit('SET_CURRENT_PLAYER', res.data)
+      return res
     },
     async logout({ commit }) {
-      await axios.get('auth/logout')
-      commit('SET_CURRENT_PLAYER', {})
+      const res = await axios.get('auth/logout')
+      commit('SET_CURRENT_PLAYER', null)
+      return res
     },
     async fetchPlayers({ commit }) {
         const res = await axios.get('api/getPlayers')
