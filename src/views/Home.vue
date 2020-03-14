@@ -1,5 +1,5 @@
 <template>
-  <div class="flex text-white font-sans">
+  <div class="flex">
     <div class="flex flex-col w-full">
       <nav class="flex items-center justify-between flex-wrap p-5">
         <div class="flex items-center flex-shrink-0 mx-5">

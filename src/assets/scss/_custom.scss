@@ -1,9 +1,12 @@
 .nav-link {
-    @apply block mt-4 inline-block text-2xl border-transparent border-solid border-b-2 mx-4 my-1 pb-4;
+    @apply block inline-block text-2xl border-transparent border-solid border-b-2 mx-4 my-1 pb-4;
 }
 .nav-link:hover{
     @apply border-purple-300;
 }
 .nav-link-active{
     @apply border-purple-300;
+}
+body{
+    @apply text-white;
 }
