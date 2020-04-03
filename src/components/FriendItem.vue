@@ -1,12 +1,12 @@
 <template>
     <div class="flex-auto">
-        <p >friends</p>
+        <p >1 Friend</p>
     </div>
 </template>
 
 <script>
 export default {
-    name: 'Friends',
+    name: 'FriendItem',
     data(){
         return {
 

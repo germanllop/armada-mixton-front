@@ -1,25 +1,13 @@
 <template>
   <div class="flex">
     <div class="flex flex-col w-full">
-      <nav class="flex items-center justify-between flex-wrap p-5">
-        <div class="flex items-center flex-shrink-0 mx-5">
-          <img src="images/logo.png" alt="Armada Offensive" width="200px">
-        </div>
-        <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
-          <div class="lg:flex-grow">
-            <router-link active-class="nav-link-active" class="nav-link" to="/">Mixtones</router-link>
-            <router-link active-class="nav-link-active" class="nav-link" to="/lobby">Mi Lobby</router-link>
-
-          </div>
-          
-        </div>
-      </nav>
-      <p class="flex-auto">banners</p>
-      <p class="flex-auto">lobbies</p>
+      <Navbar/>
+      <!-- <p class="flex-auto">banners</p> -->
+      <Lobbies/>
     </div>
-    <div class="flex flex-col w-320px">
-      <p class="flex-auto">Profile</p>
-      <p class="flex-auto">friends</p>  
+    <div class="flex flex-col w-390px shadow-left bg-blur backdrop-blur">
+      <Profile/>
+      <Friends/> 
     </div>
 
       
@@ -27,6 +15,10 @@
 </template>
 
 <script>
+import Navbar from '../components/Navbar'
+import Friends from '../components/Friends'
+import Profile from '../components/Profile'
+import Lobbies from '../components/Lobbies'
 
 export default {
   name: 'Home',
@@ -34,6 +26,12 @@ export default {
     return {
 
     }
+  },
+  components:{
+    Navbar,
+    Friends,
+    Profile,
+    Lobbies
   },
   mounted(){
 

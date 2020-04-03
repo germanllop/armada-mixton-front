@@ -1,12 +1,28 @@
 .nav-link {
-    @apply block inline-block text-2xl border-transparent border-solid border-b-2 mx-4 my-1 pb-4;
+    @apply block inline-block text-gray-600 text-2xl border-transparent border-solid border-b-2 mx-0 px-2 my-1 pb-4;
 }
 .nav-link:hover{
-    @apply border-purple-300;
+    @apply border-purple-400 text-white;
 }
 .nav-link-active{
-    @apply border-purple-300;
+    @apply border-purple-400 text-white;
 }
 body{
     @apply text-white;
+}
+.scrollbar{
+    &::-webkit-scrollbar {
+        width: 5px;
+    }
+    &::-webkit-scrollbar-track{
+        border-radius: 0px;
+    }
+    &::-webkit-scrollbar-thumb {
+        background: #888;
+        border-radius: 0px;
+        &:hover {
+            background: #555;
+        }
+    }
+    
 }
